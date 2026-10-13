@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 16px 40px;
+}
+
+.logo {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 30px;
+  letter-spacing: 6px;
+  color: #111;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.logo span {
+  color: #c9a24b;
+}
+
+.search-box {
+  border: none;
+  border-bottom: 1px solid #999;
+  padding: 6px 2px;
+  outline: none;
+  width: 200px;
+  font-size: 15px;
+}
+
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 24px;
+  font-size: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.nav-links a {
+  color: #111;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-decoration: none;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+  cursor: pointer;
+}
+
+.nav-links ul {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  list-style-type: none;
+  margin: 0;
+  padding: 12px 0;
+}
+
+.nav-links a:hover {
+  border-bottom-color: #c9a24b;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #111;
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
+}
+

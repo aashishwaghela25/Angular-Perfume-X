@@ -1,0 +1,47 @@
+<!-- Background -->
+<div class="background">
+  <img
+    src="../../../assets/images/Perfume1.png"
+    alt="Perfume background img"
+  />
+</div>
+
+<!-- Login Container -->
+<div class="login-container">
+
+  <!-- Login Box -->
+  <div class="login-box"> 
+
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="assets/images/Perfume2.png" alt="perfume img logo" />
+    </div>
+    <h2>Login</h2>
+
+    <!-- Form -->
+    <form>
+      <label>Email</label>
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="user.email"
+        placeholder="Enter your email"
+      />
+
+      <label>Password</label>
+      <input
+        type="password"
+        name="password"
+        [(ngModel)]="user.password"
+        placeholder="Enter your password"
+      />
+
+      <button type="submit" (click)="handleClick()">Login</button>
+    </form>
+
+    <p>
+      Don't have an account ?
+      <a>Create Account</a>
+    </p>
+  </div>
+</div>

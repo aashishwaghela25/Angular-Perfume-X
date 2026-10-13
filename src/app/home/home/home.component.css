@@ -1,0 +1,13 @@
+.adv {
+  display: flex;
+  height: 30px;
+  padding: 2px 10px;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  color: #c9a24b;
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+

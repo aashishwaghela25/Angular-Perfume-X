@@ -1,0 +1,80 @@
+<!-- Background -->
+<div class="background">
+  <img src="assets/images/Perfume1.png" alt="Perfume" />
+</div>
+
+<!-- Signup Container -->
+<div class="signup-container">
+
+  <!-- Signup Box -->
+  <div class="signup-box">
+  
+    <!-- Logo -->
+    <div class="logo">
+    <img src="assets/images/Perfume2.png" alt="perfume img">
+    </div>
+    
+    <h2>Create Account</h2>
+
+    <!-- Form -->
+    <form>
+      <!-- Name -->
+      <label>Enter Full Name</label>
+      <input
+        type="text"
+        name="name"
+        [(ngModel)]="user.name"
+        placeholder="Enter your name"
+        required
+      />
+
+      <!-- Email -->
+      <label>Enter Email</label>
+      <input
+        type="text"
+        name="email"
+        [(ngModel)]="user.email"
+        placeholder="Enter your email"
+        required
+      />
+
+      <!-- Phone Number -->
+      <label>Enter Phone Number</label>
+      <input
+        type="number"
+        name="phone"
+        [(ngModel)]="user.phone"
+        placeholder="Enter your phone number"
+        required
+      />
+
+      <!-- Password -->
+      <label>Enter Password</label>
+      <input
+        type="Password"
+        name="password"
+        [(ngModel)]="user.password"
+        placeholder="Enter your Password"
+        required
+      />
+
+      <!-- Confirm Password -->
+      <label>Enter Confirm Password</label>
+      <input
+        type="Password"
+        name="confirmPassword"
+        [(ngModel)]="user.confirmPassword"
+        placeholder="Enter your Confirm Password"
+        required
+      />
+
+      <!-- Button -->
+      <button type="submit" (click)="handleClick()">Sign Up</button>
+    </form>
+
+    <p>
+      Already have an account ?
+      <a>Login</a>
+    </p>
+  </div>
+</div>

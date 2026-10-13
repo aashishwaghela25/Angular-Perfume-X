@@ -1,0 +1,88 @@
+.luxury-perfumes {
+  padding: 60px;
+  text-align: center;
+}
+
+/* Section title only (not the product names) */
+.luxury-perfumes  h2 {
+  font-size: 42px;
+  margin-bottom: 10px;
+  color: #222;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.luxury-subtitle {
+  font-size: 20px;
+  color: #777;
+  margin-bottom: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.perfume-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10%;
+  width: 100%;
+}
+
+.perfume-card {
+  width: 350px;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+  transition: 0.3s ease;
+}
+
+.perfume-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.perfume-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+}
+
+/* Product name */
+.perfume-card h2 {
+  font-size: 23px;
+  margin: 15px 0 8px;
+  color: #222;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+/* Price */
+.perfume-card p {
+  font-size: 20px;
+  margin: 0 0 18px;
+  color: #444;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.perfume-card button {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background-color: #111;
+  padding: 14px 32px;
+  border: 1px solid #111;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.perfume-card button:hover {
+  background-color: #fff;
+  color: #111;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}

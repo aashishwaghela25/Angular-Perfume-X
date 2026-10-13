@@ -1,0 +1,33 @@
+<!-- Two Row Navbar Header -->
+<header class="header">
+  <!-- Row 1 -->
+  <div class="nav-top">
+    <div class="nav-left">
+      <input type="text" class="search-box" placeholder="Search perfumes..." />
+      <button class="hamburger" (click)="toggleMenu()" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Logo -->
+    <a class="logo">Perfumes<span>X</span></a>
+
+    <div class="nav-right">
+      <a>Account</a>
+      <a>Cart</a>
+    </div>
+  </div>
+
+  <!-- Row 2 Navbar -->
+  <nav class="nav-links">
+    <ul>
+      <li><a routerLink="/women">Women</a></li>
+      <li><a routerLink="/men">Men</a></li>
+      <li><a routerLink="/unisex">Unisex</a></li>
+      <li><a routerLink="/new">New Arrivals</a></li>
+      <li><a routerLink="/brands">Brands</a></li>
+    </ul>
+  </nav>
+</header>

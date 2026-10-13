@@ -1,0 +1,17 @@
+<!-- Luxury Perfume Category -->
+<section class="luxury-perfumes">
+  <h2>Luxury Perfumes</h2>
+
+  <p class="luxury-subtitle">
+    Discover our exclusive collection of Premium Fragrances
+  </p>
+
+  <div class="perfume-container">
+    <div class="perfume-card" *ngFor="let product of products">
+      <img [src]="product.image" [alt]="product.name" />
+      <h2>{{product.name}}</h2>
+      <p>₹{{product.price}}</p>
+      <button>Add To Cart</button>
+    </div>
+  </div>
+</section>
