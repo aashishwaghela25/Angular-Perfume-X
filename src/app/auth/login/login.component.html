@@ -1,21 +1,16 @@
 <!-- Background -->
 <div class="background">
-  <img
-    src="../../../assets/images/Perfume1.png"
-    alt="Perfume background img"
-  />
+  <img src="../../../assets/images/Perfume1.png" alt="Perfume background img" />
 </div>
 
 <!-- Login Container -->
 <div class="login-container">
-
   <!-- Login Box -->
-  <div class="login-box"> 
-
+  <div class="login-box">
     <!-- LOGO -->
-    <div class="logo">
+    <!-- <div class="logo">
       <img src="assets/images/Perfume2.png" alt="perfume img logo" />
-    </div>
+    </div> -->
     <h2>Login</h2>
 
     <!-- Form -->
@@ -26,7 +21,12 @@
         name="email"
         [(ngModel)]="user.email"
         placeholder="Enter your email"
+        #emailRef="ngModel"
+        required
       />
+      <!-- <span class="text-danger" *ngIf="!emailRef.valid && emailRef.touched">
+        Please Enter email
+      </span> -->
 
       <label>Password</label>
       <input
@@ -34,6 +34,7 @@
         name="password"
         [(ngModel)]="user.password"
         placeholder="Enter your password"
+        required
       />
 
       <button type="submit" (click)="handleClick()">Login</button>

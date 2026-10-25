@@ -17,6 +17,6 @@ export class LoginComponent {
     console.log('Email: ', this.user.email);
     console.log('Password: ', this.user.password);
 
-    alert('Login SuccessFul ! ');
   }
+
 }

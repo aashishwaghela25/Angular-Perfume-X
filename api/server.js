@@ -30,7 +30,7 @@ let products = [
     name: "Baccarat Rouge 540",
     price: "42,400",
     image: "assets/luxuryPerfumes/baccarat.png",
-  }
+  },
 ];
 
 app.get("/", (req, res) => {
