@@ -7,9 +7,6 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
-  menuOpen = false;
+  
 
-  toggleMenu(){
-    this.menuOpen = false;
-  }
 }
