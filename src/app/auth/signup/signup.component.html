@@ -5,71 +5,107 @@
 
 <!-- Signup Container -->
 <div class="signup-container">
-
   <!-- Signup Box -->
   <div class="signup-box">
-  
-    <!-- Logo -->
-    <!-- <div class="logo">
-    <img src="assets/images/Perfume2.png" alt="perfume img">
-    </div> -->
-    
-    <h2>Create Account</h2>
+    <h2>
+      <i
+        class="fa-solid fa-spray-can-sparkles"
+        style="color: rgb(255, 212, 59)"
+      ></i>
+      Create Account
+      <i
+        class="fa-solid fa-spray-can-sparkles"
+        style="color: rgb(255, 212, 59)"
+      ></i>
+    </h2>
 
     <!-- Form -->
-    <form>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
       <!-- Name -->
-      <label>Enter Full Name</label>
-      <input
-        type="text"
-        name="name"
-        [(ngModel)]="user.name"
-        placeholder="Enter your name"
-        required
-      />
+      <div class="form-group">
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter Name"
+          formControlName="name"
+          required
+        />
+        <small
+          *ngIf="
+            signupForm.get('name')?.touched &&
+            signupForm.get('name')?.hasError('required')"
+          >Name is required</small>
+      </div>
 
       <!-- Email -->
-      <label>Enter Email</label>
-      <input
-        type="text"
-        name="email"
-        [(ngModel)]="user.email"
-        placeholder="Enter your email"
-        required
-      />
+      <div class="form-group">
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter Email Address"
+          formControlName="email"
+          required
+        />
+        <small
+          *ngIf="
+            signupForm.get('email')?.touched &&
+            signupForm.get('email')?.hasError('email')"
+          >Email is required</small>
+      </div>
 
-      <!-- Phone Number -->
-      <label>Enter Phone Number</label>
-      <input
-        type="number"
-        name="phone"
-        [(ngModel)]="user.phone"
-        placeholder="Enter your phone number"
-        required
-      />
+      <!-- Mobile Number -->
+      <div class="form-group">
+        <input
+          type="number"
+          name="mobile"
+          placeholder="Enter Mobile Number"
+          formControlName="mobile"
+          maxlength="10"
+          required
+        />
+        <small
+          *ngIf="
+            signupForm.get('mobile')?.touched &&
+            signupForm.get('mobile')?.hasError('require')"
+          >Mobile number is required</small>
+      </div>
 
       <!-- Password -->
-      <label>Enter Password</label>
-      <input
-        type="Password"
-        name="password"
-        [(ngModel)]="user.password"
-        placeholder="Enter your Password"
-        required
-      />
+      <div class="form-group">
+        <input
+          type="Password"
+          name="password"
+          placeholder="Enter Password"
+          formControlName="password"
+          maxlength="10"
+          required
+        />
+        <small
+          *ngIf="
+            signupForm.get('password')?.touched &&
+            signupForm.get('password')?.hasError('minlength')"
+          > Password must be exactly 10 characters</small>
+      </div>
 
       <!-- Confirm Password -->
-      <label>Enter Confirm Password</label>
-      <input
-        type="Password"
-        name="confirmPassword"
-        [(ngModel)]="user.confirmPassword"
-        placeholder="Enter your Confirm Password"
-        required
-      />
+      <div class="form-group">
+        <input
+          type="Password"
+          name="confirmPassword"
+          placeholder="Enter Confirm Password"
+          formControlName="confirmPassword"
+          maxlength="10"
+          required
+        />
+        <small
+          *ngIf="
+            signupForm.get('confirmPassword')?.touched &&
+            signupForm.get('confirmPassword')?.hasError('required')"
+          >ConfirmPassword is required</small>
+      </div>
 
       <!-- Button -->
-      <button type="submit" (click)="handleClick()">Sign Up</button>
+      <button type="submit">Sign Up</button>
     </form>
 
     <p>

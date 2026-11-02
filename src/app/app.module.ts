@@ -7,20 +7,18 @@ import { AuthModule } from './auth/auth.module';
 import { HomieModule } from './home/homie.module';
 import { HttpClientModule } from '@angular/common/http';
 
-@NgModule({
-  declarations: [
-    AppComponent
 
-  ],
+@NgModule({
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     AuthModule,
     HomieModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

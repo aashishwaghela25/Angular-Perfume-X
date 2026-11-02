@@ -8,22 +8,13 @@ import { ProductService, Product } from 'src/app/services/product.service';
 })
 export class LuxuryPerfumesComponent implements OnInit {
   products: Product[] = [];
-  loading = true;
-  error = false;
 
   constructor(private productService: ProductService) {}
 
-  ngOnInit(): void {
-    this.productService.getAll().subscribe({
-      next: (data) => {
-        this.products = data;
-        this.loading = false;
-      },
-      error: (err) => {
-        console.log('API Error', err);
-        this.error = true;
-        this.loading = false;
-      },
+  ngOnInit() {
+    this.productService.getProducts().subscribe({
+      next: (data) => (this.products = data),
+      error: (err) => console.error('API error:', err),
     });
   }
 }

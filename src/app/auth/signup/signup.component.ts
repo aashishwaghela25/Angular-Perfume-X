@@ -1,31 +1,35 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
-export class SignupComponent {
-  user = {
-    name: '',
-    email: '',
-    phone: '',
-    password: '',
-    confirmPassword: '',
-  };
+export class SignupComponent implements OnInit {
+  signupForm!: FormGroup;
 
-  handleClick(): void {
-    if (this.user.password !== this.user.confirmPassword) {
-      alert('Passwords do not match!');
-      return;
-    }
+  constructor(
+    private fb: FormBuilder,
+    private authservice: AuthService,
+    private router: Router,
+  ) {}
+  ngOnInit(): void {
+    this.signupForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      mobile: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      password: ['', [Validators.required, Validators.minLength(10)]],
+      confirmPassword: ['', Validators.required],
+    });
+  }
 
-    console.log('Name: ', this.user.name);
-    console.log('Email: ', this.user.email);
-    console.log('Phone: ', this.user.phone);
-    console.log('Password: ', this.user.password);
-
-    alert('Account Created Successfully!');
+  onSubmit() {
+    console.log('Signup Data:', this.signupForm.value);
   }
 }
