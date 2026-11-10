@@ -1,6 +1,6 @@
 <!-- Background -->
 <div class="background">
-  <img src="assets/images/Perfume1.png" alt="Perfume" />
+  <img src="../../../assets/SliderImages/slider1.png" alt="Perfume" />
 </div>
 
 <!-- Signup Container -->
@@ -30,11 +30,11 @@
           formControlName="name"
           required
         />
-        <small
+        <span class="text-danger"
           *ngIf="
             signupForm.get('name')?.touched &&
             signupForm.get('name')?.hasError('required')"
-          >Name is required</small>
+          >Name is required</span>
       </div>
 
       <!-- Email -->
@@ -46,71 +46,91 @@
           formControlName="email"
           required
         />
-        <small
+        <span class="text-danger"
           *ngIf="
             signupForm.get('email')?.touched &&
             signupForm.get('email')?.hasError('email')"
-          >Email is required</small>
+          >Email is required</span>
       </div>
 
       <!-- Mobile Number -->
       <div class="form-group">
         <input
-          type="number"
+          type="tel"
           name="mobile"
           placeholder="Enter Mobile Number"
           formControlName="mobile"
           maxlength="10"
           required
         />
-        <small
+        <span class="text-danger"
           *ngIf="
             signupForm.get('mobile')?.touched &&
             signupForm.get('mobile')?.hasError('require')"
-          >Mobile number is required</small>
+          >Mobile number is required</span>
       </div>
 
       <!-- Password -->
-      <div class="form-group">
+     <div class="form-group password-wrapper">
         <input
-          type="Password"
+          [type]="showPassword ? 'text' : 'password'"
           name="password"
           placeholder="Enter Password"
           formControlName="password"
           maxlength="10"
           required
         />
-        <small
+        <button
+          type="button"
+          class="toggle-password"
+          (click)="togglePassword()"
+        >
+          <i
+            class="fa-solid"
+            [ngClass]="showPassword ? 'fa-regular fa-eye fa-jello' : 'fa-eye-slash fa-jello'"
+          ></i>
+        </button>
+                <span class="text-danger"
           *ngIf="
             signupForm.get('password')?.touched &&
             signupForm.get('password')?.hasError('minlength')"
-          > Password must be exactly 10 characters</small>
+          > Password must be exactly 10 characters</span>
       </div>
 
       <!-- Confirm Password -->
-      <div class="form-group">
+      <div class="form-group password-wrapper">
         <input
-          type="Password"
+          [type]="showConfirmPassword ? 'text' : 'password'"
           name="confirmPassword"
           placeholder="Enter Confirm Password"
           formControlName="confirmPassword"
           maxlength="10"
           required
         />
-        <small
+        <button
+          type="button"
+          class="toggle-password"
+          (click)="toggleConfirmPassword()"
+        >
+          <i
+            class="fa-solid"
+            [ngClass]="showConfirmPassword ? 'fa-regular fa-eye fa-jello' : 'fa-eye-slash fa-jello'"
+          ></i>
+        </button>
+        <span class="text-danger"
           *ngIf="
             signupForm.get('confirmPassword')?.touched &&
             signupForm.get('confirmPassword')?.hasError('required')"
-          >ConfirmPassword is required</small>
+          >ConfirmPassword is required</span>
       </div>
 
       <!-- Button -->
-      <button type="submit">Sign Up</button>
+      <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
     </form>
 
     <p>
       Already have an account ?
-      <a>Login</a>
+      <a routerLink="/login">Login</a>
     </p>
   </div>
 </div>

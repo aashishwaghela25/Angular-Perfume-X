@@ -7,7 +7,7 @@
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .signup-container {
@@ -71,7 +71,7 @@ body {
   text-align: center;
   font-size: 32px;
   margin-bottom: 30px;
-  color: white;
+  color: #111;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 500;
   letter-spacing: 2px;
@@ -99,8 +99,8 @@ body {
 
 .signup-box input:focus {
   background: white;
-  border-color: #c4882f;
-  box-shadow: 0 0 0 2px rgba(196, 136, 47, 0.25);
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.25);
 }
 
 /*  button */
@@ -135,10 +135,11 @@ body {
   font-size: 20px;
   font-family: Georgia, "Times New Roman", Times, serif;
   letter-spacing: 1px;
+  color: #111;
 }
 
 .signup-box p a {
-  color: white;
+  color: #111;
   text-decoration: none;
   font-size: 20px;
   cursor: pointer;
@@ -146,7 +147,7 @@ body {
 
 .signup-box p a:hover {
   text-decoration: underline;
-  color: #111;
+  color: white;
 }
 
 
@@ -161,11 +162,71 @@ body {
   }
 }
 
-small{
-  color: #e63946;
-  font-family: 13px;
-  margin-top: 4px;
+.signup-box span{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
   display: block;
-  text-align: left;
+  text-align: center;
 }
+
+
+
+/* Password wrapper */
+.password-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.signup-box .password-wrapper input {
+  margin-bottom: 0;
+  padding-right: 50px; /* space for the eye icon */
+}
+
+.signup-box .toggle-password {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  box-shadow: none;
+  transform: none;
+  cursor: pointer;
+}
+
+.signup-box .toggle-password i {
+  font-size: 18px;
+  color: #111; 
+  transition: color 0.2s ease;
+}
+
+/* Cancel the login button's hover effect */
+.signup-box .toggle-password:hover {
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.signup-box .toggle-password:hover i {
+  color: #0ea5e9; 
+}
+
+.signup-box .toggle-password:focus-visible {
+  outline: 2px solid #7dd3fc;
+  outline-offset: -4px;
+}
+
+
+
 

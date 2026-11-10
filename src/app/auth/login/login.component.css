@@ -8,20 +8,6 @@ body {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-/* .logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  cursor: pointer;
-}
-
-.logo img {
-  width: 200px;
-  height: auto;
-
-  object-fit: contain;
-} */
 
 .login-container {
   min-height: 100vh;
@@ -72,8 +58,8 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 22px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-
   color: white;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Login heading */
@@ -81,24 +67,13 @@ body {
   text-align: center;
   font-size: 32px;
   margin-bottom: 30px;
-  color: white;
+  color: #111;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
-/* Labels */
-.login-box label {
-  display: block;
-  margin-bottom: 8px;
-font-family: Georgia, "Times New Roman", Times, serif;
-  color: white;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 1px;
-   text-transform: uppercase;
-}
 
 /* Inputs */
 .login-box input {
@@ -120,8 +95,8 @@ font-family: Georgia, "Times New Roman", Times, serif;
 
 .login-box input:focus {
   background: white;
-  border-color: #c4882f;
-  box-shadow: 0 0 0 2px rgba(196, 136, 47, 0.25);
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.25);
 }
 
 /* Login button */
@@ -155,10 +130,11 @@ font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 20px;
   font-family: Georgia, "Times New Roman", Times, serif;
   letter-spacing: 1px;
+  color: #111;
 }
 
 .login-box p a {
-  color: white;
+  color: #111;
   text-decoration: none;
   font-size: 20px;
   cursor: pointer;
@@ -166,10 +142,98 @@ font-family: Georgia, "Times New Roman", Times, serif;
 
 .login-box p a:hover {
   text-decoration: underline;
-  color: #111;
+  color: white;
 }
 
 input.ng-invalid.ng-touched,
 select.ng-invalid.ng-touched {
   outline: 2px solid red;
+}
+
+.forget-password{
+  display: block;
+  text-align: right;
+  margin-top: 5px;
+  color: #111;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2 ease;
+}
+
+.forget-password:hover{
+  color: white;
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from{
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error {
+  color: #dc2626;
+  font-size: 14px;
+  margin: 8px 0;
+}
+
+/* Password wrapper */
+.password-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.login-box .password-wrapper input {
+  margin-bottom: 0;
+  padding-right: 50px; /* space for the eye icon */
+}
+
+.login-box .toggle-password {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  box-shadow: none;
+  transform: none;
+  cursor: pointer;
+}
+
+.login-box .toggle-password i {
+  font-size: 18px;
+  color: #111; 
+  transition: color 0.2s ease;
+}
+
+/* Cancel the login button's hover effect */
+.login-box .toggle-password:hover {
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.login-box .toggle-password:hover i {
+  color: #38bdf8; 
+}
+
+.login-box .toggle-password:focus-visible {
+  outline: 2px solid #7dd3fc;
+  outline-offset: -4px;
 }

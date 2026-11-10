@@ -24,14 +24,26 @@ header {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 30px;
   letter-spacing: 6px;
-  color: #111;
+  color: #c9a24d;
   text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
 }
 
 .logo span {
-  color: #c9a24d;
+  color: #111;
+}
+
+small {
+  display: block;
+  text-align: center;
+  justify-content: center;
+  margin-top: 2px;
+  font-size: 15px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #b8975a;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 /* Nav */
@@ -76,4 +88,19 @@ header {
     gap: 15px 20px;
     padding: 0 10px;
   }
+}
+
+.logout-btn {
+  padding: 8px 18px;
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #b91c1c;
 }

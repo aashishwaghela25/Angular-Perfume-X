@@ -5,6 +5,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SliderComponent } from './slider/slider.component';
 import { LuxuryPerfumesComponent } from './luxury-perfumes/luxury-perfumes.component';
 import { ProductsModule } from '../products/products.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -13,12 +14,7 @@ import { ProductsModule } from '../products/products.module';
     SliderComponent,
     LuxuryPerfumesComponent,
   ],
-  imports: [
-    CommonModule,
-    ProductsModule
-  ],
-  exports: [
-    HomeComponent
-  ]
+  imports: [CommonModule, ProductsModule, RouterModule],
+  exports: [HomeComponent],
 })
-export class HomieModule { }
+export class HomieModule {}

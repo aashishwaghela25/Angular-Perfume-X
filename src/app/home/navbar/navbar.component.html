@@ -1,23 +1,36 @@
-
 <header>
-
-<div class="logo">
-   <a routerLink="/">Perfumes<span>X</span></a>
-</div>
+  <div class="logo">
+    <a routerLink="/home">Perfumes<span>X</span></a>
+    <small class="small">Perfumery</small>
+  </div>
 
   <nav class="navbar">
     <div class="nav-links">
       <ul>
-        <li><a routerLink="/women" routerLinkActive="active">Women</a></li>
-        <li><a routerLink="/men" routerLinkActive="active">Men</a></li>
-        <li><a routerLink="/unisex" routerLinkActive="active">Unisex</a></li>
-        <li><a routerLink="/new" routerLinkActive="active">New Arrivals</a></li>
-        <li><a routerLink="/brands" routerLinkActive="active">Brands</a></li>
-        <li><a>Account</a></li>
+        <li><a routerLink="#" routerLinkActive="active">Women</a></li>
+        <li><a routerLink="#" routerLinkActive="active">Men</a></li>
+        <li><a routerLink="#" routerLinkActive="active">Unisex</a></li>
+        <li><a routerLink="#" routerLinkActive="active">New Arrivals</a></li>
+        <li><a routerLink="#" routerLinkActive="active">Brands</a></li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-expanded="false"
+            >Account</a
+          >
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li>
+              <button type="button" class="logout-btn" (click)="logout()">
+                LogOut
+              </button>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
   </nav>
-
 </header>
-
-

@@ -1,48 +1,67 @@
 <!-- Background -->
 <div class="background">
-  <img src="../../../assets/images/Perfume1.png" alt="Perfume background img" />
+  <img src="../../../assets/SliderImages/slider1.png" alt="Perfume background img" />
 </div>
 
 <!-- Login Container -->
 <div class="login-container">
   <!-- Login Box -->
   <div class="login-box">
-    <!-- LOGO -->
-    <!-- <div class="logo">
-      <img src="assets/images/Perfume2.png" alt="perfume img logo" />
-    </div> -->
-    <h2>Login</h2>
+    <h2>
+      <i
+        class="fa-solid fa-spray-can-sparkles"
+        style="color: rgb(255, 212, 59)"
+      ></i
+      >Login<i
+        class="fa-solid fa-spray-can-sparkles"
+        style="color: rgb(255, 212, 59)"
+      ></i>
+    </h2>
 
     <!-- Form -->
-    <form>
-      <label>Email</label>
-      <input
-        type="email"
-        name="email"
-        [(ngModel)]="user.email"
-        placeholder="Enter your email"
-        #emailRef="ngModel"
-        required
-      />
-      <!-- <span class="text-danger" *ngIf="!emailRef.valid && emailRef.touched">
-        Please Enter email
-      </span> -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter Email Address"
+          formControlName="email"
+          required
+        />
+      </div>
 
-      <label>Password</label>
-      <input
-        type="password"
-        name="password"
-        [(ngModel)]="user.password"
-        placeholder="Enter your password"
-        required
-      />
+      <!-- Password -->
+      <div class="form-group password-wrapper">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          name="password"
+          placeholder="Enter Password"
+          formControlName="password"
+          maxlength="10"
+          required
+        />
+        <button
+          type="button"
+          class="toggle-password"
+          (click)="togglePassword()"
+        >
+          <i
+            class="fa-solid"
+            [ngClass]="showPassword ? 'fa-regular fa-eye fa-jello' : 'fa-eye-slash fa-jello'"
+          ></i>
+        </button>
+      </div>
 
-      <button type="submit" (click)="handleClick()">Login</button>
+      <a routerLink="/forgot-password" class="forget-password"
+        >Forgot Password</a
+      >
+
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
     </form>
 
     <p>
       Don't have an account ?
-      <a>Create Account</a>
+      <a routerLink="/signup">Create Account</a>
     </p>
   </div>
 </div>
