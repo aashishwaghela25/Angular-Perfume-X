@@ -1,94 +1,187 @@
 .luxury-perfumes {
-  padding: 60px;
+  padding: 60px 40px;
   text-align: center;
 }
 
-.luxury-perfumes  h2 {
-  font-size: 42px;
-  margin-bottom: 10px;
-  color: #222;
+.luxury-title {
   font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 500;
+  margin: 0 0 10px;
+  color: #222;
 }
 
 .luxury-subtitle {
-  font-size: 20px;
-  color: #777;
-  margin-bottom: 20px;
   font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  color: #777;
+  margin: 0 auto 20px;
+  max-width: 600px;
 }
 
+/* ---------- Grid ---------- */
 .perfume-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;          
-  padding: 40px 20px;
-  box-sizing: border-box;
-}
-
-.perfume-card {
-  width: 100%;
-  max-width: 350px;
+  max-width: 1300px;
   margin: 0 auto;
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
-  transition: 0.3s ease;
+  padding: 30px 0 0;
 }
 
-.perfume-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+/* ---------- Card ---------- */
+.perfume-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 16px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.perfume-card img {
+.perfume-img {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
   border-radius: 10px;
+  background: #f6f6f6;
+}
+.perfume-img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
-/* Product name */
-.perfume-card h2 {
-  font-size: 23px;
-  margin: 15px 0 8px;
+.perfume-name {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: clamp(1rem, 1.5vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 14px 0 6px;
   color: #222;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  /* keep names to 2 lines so cards stay equal height */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.6em;
 }
 
-/* Price */
-.perfume-card p {
-  font-size: 20px;
-  margin: 0 0 18px;
-  color: #444;
+.perfume-price {
   font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+  margin: 0 0 16px;
+  color: #444;
 }
 
 .perfume-card button {
-  font-family: inherit;
-  font-size: 16px;
+  margin-top: auto; /* pushes button to the bottom */
+  width: 100%;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.5px;
   color: #fff;
   background-color: #111;
-  padding: 14px 32px;
+  padding: 13px 20px;
   border: 1px solid #111;
   border-radius: 6px;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.perfume-card button:hover {
-  background-color: #fff;
-  color: #111;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+/* Hover effects only on devices that actually hover (not touch) */
+@media (hover: hover) {
+  .perfume-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  .perfume-card:hover .perfume-img img {
+    transform: scale(1.05);
+  }
+  .perfume-card button:hover {
+    background-color: #fff;
+    color: #111;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.perfume-card button:active {
+  transform: scale(0.98);
+}
+
+/* ---------- Large laptop ---------- */
+@media (max-width: 1199.98px) {
+  .perfume-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 991.98px) {
+  .luxury-perfumes {
+    padding: 50px 24px;
+  }
+  .perfume-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+/* ---------- Mobile (2 columns like real shops) ---------- */
+@media (max-width: 600px) {
+  .luxury-perfumes {
+    padding: 40px 14px;
+  }
+  .perfume-container {
+    gap: 12px;
+    padding-top: 20px;
+  }
+  .perfume-card {
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .perfume-img {
+    border-radius: 8px;
+  }
+  .perfume-name {
+    font-size: 0.95rem;
+    margin: 10px 0 4px;
+  }
+  .perfume-price {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+  }
+  .perfume-card button {
+    padding: 11px 8px;
+    font-size: 0.8rem;
+    letter-spacing: 0;
+  }
+}
+
+/* ---------- Very small phones: 1 column ---------- */
+@media (max-width: 359.98px) {
+  .perfume-container {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 300px;
+  }
+}
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .perfume-card,
+  .perfume-img img,
+  .perfume-card button {
+    transition: none;
+  }
 }

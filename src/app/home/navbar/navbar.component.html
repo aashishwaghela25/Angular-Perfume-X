@@ -1,36 +1,141 @@
 <header>
-  <div class="logo">
-    <a routerLink="/home">Perfumes<span>X</span></a>
-    <small class="small">Perfumery</small>
+  <div class="top-row">
+    <!-- Left: Hamburger + Search (search hidden on mobile) -->
+    <div class="left-group">
+      <button
+        type="button"
+        class="hamburger"
+        (click)="toggleMenu($event)"
+        aria-label="Open menu"
+        [attr.aria-expanded]="menuOpen"
+      >
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="search-box desktop-only">
+        <input type="search" placeholder="Search Your fragrance" />
+        <button type="button">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Center: Logo -->
+    <div class="logo">
+      <a routerLink="/home">Perfumes<span>X</span></a>
+      <small class="small">Perfumery</small>
+    </div>
+
+    <!-- Right: Account + Cart (hidden on mobile) -->
+    <div class="header-icons desktop-only">
+      <div class="account-dropdown" [class.open]="accountOpen">
+        <a
+          class="icon-btn"
+          role="button"
+          aria-label="Account"
+          aria-haspopup="true"
+          [attr.aria-expanded]="accountOpen"
+          (click)="toggleAccount($event)"
+        >
+          <i class="fa-solid fa-user"></i>
+        </a>
+        <ul class="account-menu">
+          <li>
+            <a routerLink="/profile" (click)="accountOpen = false">
+              <i class="fa-solid fa-id-card"></i> Profile
+            </a>
+          </li>
+          <li>
+            <button type="button" (click)="logout()">
+              <i class="fa-solid fa-right-from-bracket"></i> Log Out
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <a class="icon-btn" routerLink="/cart" aria-label="Cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count">0</span>
+      </a>
+    </div>
   </div>
 
-  <nav class="navbar">
-    <div class="nav-links">
+  <!-- Backdrop (mobile sidebar) -->
+  <div class="backdrop" [class.show]="menuOpen" (click)="closeMenu()"></div>
+
+  <nav class="main-nav">
+    <div class="nav-links" [class.open]="menuOpen" (click)="$event.stopPropagation()">
+      <button type="button" class="sidebar-close" (click)="closeMenu()" aria-label="Close menu">
+        &times;
+      </button>
+
+      <!-- Sidebar search (mobile only) -->
+      <div class="sidebar-search sidebar-only">
+        <input type="search" placeholder="Search Your fragrance" />
+        <button type="button" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
       <ul>
-        <li><a routerLink="#" routerLinkActive="active">Women</a></li>
-        <li><a routerLink="#" routerLinkActive="active">Men</a></li>
-        <li><a routerLink="#" routerLinkActive="active">Unisex</a></li>
-        <li><a routerLink="#" routerLinkActive="active">New Arrivals</a></li>
-        <li><a routerLink="#" routerLinkActive="active">Brands</a></li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link"
-            data-bs-toggle="dropdown"
-            href="#"
-            role="button"
-            aria-expanded="false"
-            >Account</a
-          >
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li>
-              <button type="button" class="logout-btn" (click)="logout()">
-                LogOut
-              </button>
-            </li>
+        <li><a routerLink="/home" (click)="closeMenu()">Home</a></li>
+
+        <li>
+          <a routerLink="/allbrands" routerLinkActive="active" (click)="closeMenu()">All Brands</a>
+        </li>
+
+        <!-- Category -->
+        <li class="dropdown" [class.open]="openDropdown === 'category'">
+          <a class="dropdown-toggle" role="button" (click)="toggleDropdown('category')">Category</a>
+          <ul class="dropdown-menu" (click)="closeMenu()">
+            <li><a class="dropdown-item" routerLink="/women">Women</a></li>
+            <li><a class="dropdown-item" routerLink="/men">Men</a></li>
+            <li><a class="dropdown-item" routerLink="/unisex">Unisex</a></li>
+            <li><a class="dropdown-item" routerLink="/">Eau de Parfum</a></li>
+            <li><a class="dropdown-item" routerLink="/">Eau de Toilette</a></li>
+            <li><a class="dropdown-item" routerLink="/">Attar</a></li>
+          </ul>
+        </li>
+
+        <!-- Bath & Body Care -->
+        <li class="dropdown" [class.open]="openDropdown === 'bath'">
+          <a class="dropdown-toggle" role="button" (click)="toggleDropdown('bath')">
+            Bath &amp; Body Care
+          </a>
+          <ul class="dropdown-menu" (click)="closeMenu()">
+            <li><a class="dropdown-item" routerLink="/body-lotion">Body Lotion</a></li>
+            <li><a class="dropdown-item" routerLink="/shower-gel">Shower Gel</a></li>
+            <li><a class="dropdown-item" routerLink="/face-cream">Face Cream</a></li>
+            <li><a class="dropdown-item" routerLink="/hand-cream">Hand Cream</a></li>
+          </ul>
+        </li>
+
+        <!-- Home Fragrance -->
+        <li class="dropdown" [class.open]="openDropdown === 'home'">
+          <a class="dropdown-toggle" role="button" (click)="toggleDropdown('home')">
+            Home Fragrance
+          </a>
+          <ul class="dropdown-menu" (click)="closeMenu()">
+            <li><a class="dropdown-item" routerLink="/home-fragrance/candles">Scented Candles</a></li>
+            <li><a class="dropdown-item" routerLink="/home-fragrance/room-spray">Room Sprays</a></li>
+            <li><a class="dropdown-item" routerLink="/home-fragrance/car-perfume">Car Perfume</a></li>
           </ul>
         </li>
       </ul>
+
+      <!-- Account + Cart inside sidebar (mobile only) -->
+      <div class="sidebar-actions sidebar-only">
+        <a routerLink="/profile" (click)="closeMenu()">
+          <i class="fa-solid fa-user"></i> Profile
+        </a>
+        <a routerLink="/cart" (click)="closeMenu()">
+          <i class="fa-solid fa-cart-shopping"></i> Cart
+          <span class="sidebar-cart-count">0</span>
+        </a>
+        <button type="button" (click)="logout()">
+          <i class="fa-solid fa-right-from-bracket"></i> Log Out
+        </button>
+      </div>
     </div>
   </nav>
 </header>

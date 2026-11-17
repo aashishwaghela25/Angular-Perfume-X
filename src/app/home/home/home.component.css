@@ -1,13 +1,108 @@
 .adv {
+  position: relative;
   display: flex;
-  height: 30px;
-  padding: 2px 10px;
   align-items: center;
-  justify-content: center;
-  background: black;
-  color: #c9a24b;
+  height: 38px;
+  background: #000;
+  color: #c9a24d;
   overflow: hidden;
   white-space: nowrap;
-  letter-spacing: 0.5px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
+/* soft fade on both edges */
+.adv::before,
+.adv::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 1;
+  pointer-events: none;
+}
+.adv::before {
+  left: 0;
+  background: linear-gradient(to right, #000, transparent);
+}
+.adv::after {
+  right: 0;
+  background: linear-gradient(to left, #000, transparent);
+}
+
+
+.adv-track {
+  display: flex;
+  width: max-content;
+  animation: adv-slide 30s linear infinite;
+  will-change: transform;
+}
+.adv:hover .adv-track {
+  animation-play-state: paused;
+}
+
+.adv-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.adv-group span {
+  padding: 0 22px;
+}
+.adv-group strong {
+  color: #fff;
+  font-weight: 600;
+}
+.adv-group .dot {
+  padding: 0;
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+@keyframes adv-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Tablet */
+@media (max-width: 991.98px) {
+  .adv {
+    height: 34px;
+    font-size: 13px;
+  }
+  .adv-track {
+    animation-duration: 25s;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .adv {
+    height: 32px;
+    font-size: 11.5px;
+    letter-spacing: 0.5px;
+  }
+  .adv-group span {
+    padding: 0 14px;
+  }
+  .adv::before,
+  .adv::after {
+    width: 30px;
+  }
+  .adv-track {
+    animation-duration: 20s;
+  }
+}
+
+/* Accessibility: stop motion if the user prefers it */
+@media (prefers-reduced-motion: reduce) {
+  .adv-track {
+    animation: none;
+  }
+}

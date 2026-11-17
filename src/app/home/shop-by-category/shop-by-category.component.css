@@ -1,0 +1,123 @@
+.shop-category {
+  width: 100%;
+  padding: 30px 20px 40px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+
+.category-list {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.category-item {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+  text-decoration: none;
+}
+
+.category-circle {
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #f4f4f4;
+}
+.category-circle img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.category-name {
+  margin-top: 12px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #3a2f26;
+  transition: color 0.3s;
+}
+
+@media (hover: hover) {
+  .category-item:hover .category-circle img {
+    transform: scale(1.1);
+  }
+  .category-item:hover .category-name {
+    color: #c9a24d;
+  }
+}
+
+/* Laptop / small desktop: tighter gap */
+@media (max-width: 1199.98px) {
+  .category-list {
+    gap: 30px;
+  }
+  .category-circle {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Tablet and below: horizontal scroll */
+@media (max-width: 991.98px) {
+  .category-list {
+    justify-content: flex-start;
+    gap: 24px;
+    overflow-x: auto;
+    padding: 4px 4px 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .category-list::-webkit-scrollbar {
+    display: none;
+  }
+  .category-item {
+    scroll-snap-align: start;
+  }
+  .category-circle {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .shop-category {
+    padding: 22px 14px 28px;
+  }
+  .category-heading {
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+  }
+  .category-list {
+    gap: 16px;
+  }
+  .category-circle {
+    width: 84px;
+    height: 84px;
+  }
+  .category-name {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .category-circle img,
+  .feature-icon,
+  .category-name {
+    transition: none;
+  }
+}

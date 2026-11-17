@@ -20,29 +20,34 @@
   display: block;
 }
 
+/* Dark overlay for readable text */
 .slider-container::after {
   content: "";
   position: absolute;
   inset: 0;
-
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 0.65) 0%,
     rgba(0, 0, 0, 0.35) 50%,
     rgba(0, 0, 0, 0.1) 100%
   );
-
   z-index: 1;
 }
 
+/* Positioning wrapper (no animation here, so transform never conflicts) */
 .slider-content {
   position: absolute;
   top: 50%;
   left: 8%;
-  transform: translateX(-50%);
+  right: 8%;
+  transform: translateY(-50%);
   max-width: 560px;
-  color: white;
+  color: #fff;
   z-index: 2;
+}
+
+/* Animated inner block */
+.slider-inner {
   animation: fadeUp 1s ease both;
 }
 
@@ -55,41 +60,114 @@
   letter-spacing: 1px;
 }
 
-.slider-content p {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
-  line-height: 1.7;
-  margin: 0 0 30px;
-  color: #e8e8e8;
-}
 
 .slider-content button {
   background: transparent;
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #fff;
-  border: 1px solid #c9a24b;
+  border: 1px solid #c9a24d;
   padding: 14px 36px;
   font-size: 0.8rem;
   letter-spacing: 3px;
   text-transform: uppercase;
   cursor: pointer;
-  transition:
-    background 0.3s,
-    color 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 
 .slider-content button:hover {
-  background: #c9a24b;
+  background: #c9a24d;
   color: #111;
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(-40%);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
-    transform: translateY(-50%);
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Large screens ---------- */
+@media (min-width: 1400px) {
+  .slider-content {
+    left: 10%;
+    max-width: 640px;
+  }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 991.98px) {
+  .slider-container {
+    height: 65vh;
+    min-height: 420px;
+  }
+  .slider-content {
+    left: 6%;
+    right: 6%;
+    max-width: 480px;
+  }
+  .slider-content button {
+    padding: 13px 30px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  .slider-container {
+    height: 70vh;
+    min-height: 380px;
+    max-height: 560px;
+  }
+
+  /* even overlay, since text now covers more of the image */
+  .slider-container::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.45) 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+  }
+
+  .slider-content {
+    left: 20px;
+    right: 20px;
+    max-width: none;
+    text-align: center;
+  }
+  .slider-content h1 {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+  .slider-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .slider-content button {
+    padding: 12px 28px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* ---------- Short landscape phones ---------- */
+@media (max-height: 500px) and (orientation: landscape) {
+  .slider-container {
+    height: 100vh;
+    min-height: 320px;
+  }
+  .slider-content p {
+    display: none;
+  }
+}
+
+/* Respect reduced-motion setting */
+@media (prefers-reduced-motion: reduce) {
+  .slider-inner {
+    animation: none;
   }
 }

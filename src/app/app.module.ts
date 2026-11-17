@@ -8,6 +8,7 @@ import { HomieModule } from './home/homie.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth.interceptor';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [

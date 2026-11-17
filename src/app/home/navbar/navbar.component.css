@@ -16,28 +16,97 @@ header {
   border-bottom: 1px solid #eee;
 }
 
+/* ---------- Top row ---------- */
+.top-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 12px 30px;
+}
+
+.left-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-self: start;
+  width: 100%;
+}
+
+/* Hamburger (hidden on desktop, shown on mobile) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #111;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.hamburger:hover span {
+  background: #c9a24d;
+}
+
+/* Search */
+.search-box {
+  display: flex;
+  width: 100%;
+  max-width: 320px;
+}
+.search-box input {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 14px;
+  border: 1px solid #333;
+  border-right: 0;
+  border-radius: 6px 0 0 6px;
+  background: #fff;
+  color: #111;
+  outline: none;
+}
+.search-box input::placeholder {
+  color: #888;
+}
+.search-box button {
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+  color: #fff;
+  background-color: #c9a24d;
+}
+
 /* Logo */
 .logo a {
   display: flex;
   justify-content: center;
-  width: 250px;
+  padding: 0 10px;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 30px;
   letter-spacing: 6px;
   color: #c9a24d;
   text-decoration: none;
   text-transform: uppercase;
-  cursor: pointer;
 }
-
 .logo span {
   color: #111;
 }
-
 small {
   display: block;
   text-align: center;
-  justify-content: center;
   margin-top: 2px;
   font-size: 15px;
   letter-spacing: 4px;
@@ -46,61 +115,348 @@ small {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-/* Nav */
-.navbar {
+/* Icons */
+.header-icons {
+  justify-self: end;
   display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.icon-btn {
+  position: relative;
+  font-size: 1.25rem;
+  color: #111;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.icon-btn:hover {
+  color: #c9a24d;
+}
+.cart-count {
+  position: absolute;
+  top: -9px;
+  right: -12px;
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  font-size: 11px;
+  text-align: center;
+  color: #fff;
+  background: #c9a24d;
+  border-radius: 50%;
+}
+
+/* Account dropdown (desktop) */
+.account-dropdown {
+  position: relative;
+}
+.account-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 12px);
+  min-width: 170px;
+  padding: 6px 0;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #eee;
+  border-top: 2px solid #c9a24d;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+  z-index: 1100;
+}
+.account-dropdown.open .account-menu {
+  display: block;
+}
+.account-menu a,
+.account-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 18px;
+  background: none;
+  border: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 16px;
+  color: #333;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+.account-menu a:hover,
+.account-menu button:hover {
+  background: #faf6ec;
+  color: #c9a24d;
+}
+
+/* Sidebar-only blocks are hidden on desktop */
+.sidebar-only {
+  display: none;
+}
+
+/* ---------- Nav (desktop) ---------- */
+.main-nav {
+  display: flex;
+  justify-content: center;
   align-items: center;
   margin-top: 20px;
 }
+.sidebar-close,
+.backdrop {
+  display: none;
+}
 
-.nav-links ul {
+.nav-links > ul {
   display: flex;
-  justify-content: center; /* centers the links */
+  justify-content: center;
   gap: 35px;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
-
-.nav-links a {
+.nav-links > ul > li {
+  position: relative;
+}
+.nav-links > ul > li > a {
+  display: inline-block;
   color: #111;
   font-family: Georgia, "Times New Roman", Times, serif;
-  text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 2px;
+  text-decoration: none;
   padding-bottom: 4px;
   border-bottom: 1px solid transparent;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, color 0.3s;
   cursor: pointer;
 }
-
-.nav-links a:hover,
-.nav-links a.active {
+.nav-links > ul > li > a:hover,
+.nav-links > ul > li > a.active,
+.nav-links > ul > li.open > a {
   color: #c9a24d;
   border-bottom-color: #c9a24d;
 }
 
-/* Small screens: let links wrap */
-@media (max-width: 600px) {
-  .nav-links ul {
-    flex-wrap: wrap;
-    gap: 15px 20px;
-    padding: 0 10px;
+/* Dropdown box */
+.nav-links .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 210px;
+  margin-top: 10px;
+  padding: 8px 0;
+  list-style: none;
+  background: #fff;
+  border: 0;
+  border-top: 2px solid #c9a24d;
+  border-radius: 0;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+.nav-links .dropdown-item {
+  display: block;
+  padding: 10px 24px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav-links .dropdown-item:hover {
+  background: #faf6ec;
+  color: #c9a24d;
+}
+
+/* Desktop: dropdown opens on hover (or click) */
+@media (min-width: 992px) {
+  .nav-links .dropdown:hover > .dropdown-menu,
+  .nav-links .dropdown.open > .dropdown-menu {
+    display: block;
   }
 }
 
-.logout-btn {
-  padding: 8px 18px;
-  background: #dc2626;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.2s ease;
+/* ---------- Mobile / tablet: left sidebar ---------- */
+@media (max-width: 991.98px) {
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide top-bar search + icons (they live in the sidebar now) */
+  .desktop-only {
+    display: none !important;
+  }
+  .sidebar-only {
+    display: block;
+  }
+
+  .main-nav {
+    margin-top: 0;
+  }
+
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 1;
+  }
+  .backdrop.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 280px;
+    max-width: 85%;
+    height: 100vh;
+    padding: 70px 24px 24px;
+    background: #fff;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+  .nav-links.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-close {
+    display: block;
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: 0;
+    font-size: 34px;
+    line-height: 1;
+    color: #111;
+    cursor: pointer;
+  }
+
+  /* Sidebar search */
+  .sidebar-search.sidebar-only {
+    display: flex;
+    margin-bottom: 14px;
+  }
+  .sidebar-search input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 14px;
+    border: 1px solid #333;
+    border-right: 0;
+    border-radius: 6px 0 0 6px;
+    background: #fff;
+    color: #111;
+    outline: none;
+  }
+  .sidebar-search button {
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 0 6px 6px 0;
+    background: #c9a24d;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  /* Sidebar links */
+  .nav-links > ul {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+  }
+  .nav-links > ul > li {
+    border-bottom: 1px solid #eee;
+  }
+  .nav-links > ul > li > a {
+    display: block;
+    padding: 14px 0;
+    font-size: 17px;
+    border-bottom: 0;
+  }
+
+  /* Dropdowns become accordions */
+  .nav-links .dropdown-menu {
+    position: static;
+    margin: 0 0 10px;
+    padding: 0 0 0 14px;
+    box-shadow: none;
+    border-top: 0;
+    border-left: 2px solid #c9a24d;
+  }
+  .nav-links .dropdown.open > .dropdown-menu {
+    display: block;
+  }
+  .nav-links .dropdown-item {
+    padding: 9px 12px;
+    font-size: 16px;
+  }
+
+  /* Sidebar account / cart / logout */
+  .sidebar-actions {
+    margin-top: 16px;
+    padding-top: 8px;
+    border-top: 2px solid #c9a24d;
+  }
+  .sidebar-actions a,
+  .sidebar-actions button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 0;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 17px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: left;
+    color: #111;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .sidebar-actions a:hover,
+  .sidebar-actions button:hover {
+    color: #c9a24d;
+  }
+  .sidebar-actions i {
+    width: 20px;
+    text-align: center;
+  }
+  .sidebar-cart-count {
+    margin-left: auto;
+    min-width: 22px;
+    height: 22px;
+    line-height: 22px;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    background: #c9a24d;
+    border-radius: 50%;
+  }
 }
 
-.logout-btn:hover {
-  background: #b91c1c;
+/* ---------- Small phones ---------- */
+@media (max-width: 600px) {
+  .top-row {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+  .logo a {
+    font-size: 20px;
+    letter-spacing: 3px;
+  }
+  small {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
 }

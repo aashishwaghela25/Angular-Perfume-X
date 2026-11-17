@@ -1,0 +1,86 @@
+.adv-candles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 60px;
+  background: #fff;
+}
+
+adv-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1/ 1;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.adv-content {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #111;
+}
+
+.adv-content h2 {
+  font-size: 25px;
+  font-weight: 400px;
+  font-variant: small-caps;
+  letter-spacing: 0.5px;
+  margin: 0 0 12px;
+}
+
+.adv-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+.adv-btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border: 1px solid #000;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+.adv-btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .adv-candles {
+    gap: 24px;
+    padding: 0 30px;
+  }
+  .adv-content h2 {
+    font-size: 22px;
+  }
+  .adv-content p {
+    font-size: 15px;
+  }
+}
+
+/* Mobile: stack image on top, text below */
+@media (max-width: 768px) {
+  .adv-candles {
+    grid-template-columns: 1fr;
+    padding: 0 16px;
+    margin: 24px auto;
+  }
+  .adv-content {
+    padding: 10px 0 20px;
+  }
+}

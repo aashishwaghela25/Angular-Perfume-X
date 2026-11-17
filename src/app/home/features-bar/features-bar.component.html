@@ -1,0 +1,12 @@
+<section class="features-bar">
+    <div class="features-container">
+        <div class="features-item" *ngFor="let f of features">
+            <div class="features-icon">
+                <i [class]="'fa-solid ' + f.icon"></i>
+            </div>
+            <h3 class="features-tittle">{{f.title}}</h3>
+            <p class="features-text">{{f.text}}</p>
+        </div>
+    </div>
+    <hr>
+</section>
